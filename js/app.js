@@ -1,7 +1,12 @@
 /*
  * Create a list that holds all of your cards
  */
-
+deckCards = document.querySelectorAll(".deck li");
+cardTitles = [];
+for (let i = 0; i < deckCards.length; i++) {
+		cardTitles.push(deckCards[i].firstElementChild.className);
+}
+openCards = [];
 
 /*
  * Display the cards on the page
@@ -25,6 +30,17 @@ function shuffle(array) {
     return array;
 }
 
+function flipCard(event) {
+		openCards.push(event.target);
+		event.target.addClass("open show")
+		if (openCards.length == 2) {
+			    if (openCards[0].firstElementChild.className == openCards[1].firstElementChild.className) {
+						event.target.addClass("match");
+						else {
+						event.target.remove("open show");
+						}
+				}
+		}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -36,3 +52,6 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+for( let i = 0; i < deckCards.length; i++ ) {
+		deckCards[i].addEventListener('click',flipCard);
+}
