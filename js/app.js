@@ -32,15 +32,18 @@ function shuffle(array) {
 
 function flipCard(event) {
 		openCards.push(event.target);
-		event.target.addClass("open show")
-		if (openCards.length == 2) {
-			    if (openCards[0].firstElementChild.className == openCards[1].firstElementChild.className) {
-						event.target.addClass("match");
+		event.target.setAttribute("class","card open show");
+		if (openCards.length < 3 ) {
+			    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
+						openCards = [];
+						event.target.setAttribute("class","card open show match");
 				}
 						else {
-						event.target.remove("open show");
+                        openCards = []; 
+						event.target.setAttribute("class","card");
 						}
 			}
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
