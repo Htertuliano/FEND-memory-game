@@ -36,11 +36,11 @@ function flipCard(event) {
 		if (openCards.length == 2) {
 			    if (openCards[0].firstElementChild.className == openCards[1].firstElementChild.className) {
 						event.target.addClass("match");
+				}
 						else {
 						event.target.remove("open show");
 						}
-				}
-		}
+			}
 
 /*
  * set up the event listener for a card. If a card is clicked:
