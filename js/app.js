@@ -31,20 +31,39 @@ function shuffle(array) {
 }
 
 function flipCard(event) {
-		openCards.push(event.target);
-		event.target.setAttribute("class","card open show");
-		if (openCards.length < 3 ) {
-			    if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className) {
+		event.stopImmediatePropagation();
+        openCards.push(event.target);
+		console.log('open cards =' + openCards.length);
+		event.target.style.animation = 'rotate 3s';
+        event.target.setAttribute("class","card open show");
+        if (openCards.length  === 2 ) {
+                if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
+                        openCards[0].setAttribute("class","card show open match");
+						openCards[1].setAttribute("class", "card show open match");
 						openCards = [];
-						event.target.setAttribute("class","card open show match");
-				}
-						else {
+                }
+                        else {
+                        openCards[0].setAttribute("class","card");
+						openCards[1].setAttribute("class", "card");
                         openCards = []; 
-						event.target.setAttribute("class","card");
-						}
-			}
+                        }
+            }
 }
 
+function setTimer() {
+	let frag = document.createDocumentFragment();
+	let timer = document.createElement("h1");
+		timer.textContent = "00:00"	;
+		frag.appendChild(timer);
+
+		let now = Date.noaw();
+		let offset;
+		let timePassed = 
+
+
+
+
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
