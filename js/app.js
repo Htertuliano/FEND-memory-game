@@ -8,6 +8,20 @@ for (let i = 0; i < deckCards.length; i++) {
 }
 openCards = [];
 
+function leadZero(num) {
+		return ( num < 10 ? '0' : '') + num;
+}
+
+let secs = 00;
+let mins = 00;
+let timer = document.createDocumentFragment();
+let body = document.querySelector('body');
+		let counter = document.createElement('h1');
+		counter.textContent = `${ leadZero(mins) }:${ leadZero(secs) }`;
+		counter.setAttribute("class", "counter");
+		timer.appendChild(counter);
+		body.appendChild(timer);
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -31,8 +45,9 @@ function shuffle(array) {
 }
 
 function flipCard(event) {
+		setInterval(setTimer, 1000);
 		event.stopImmediatePropagation();
-        openCards.push(event.target);
+		openCards.push(event.target);
 		console.log('open cards =' + openCards.length);
 		event.target.style.animation = 'rotate 3s';
         event.target.setAttribute("class","card open show");
@@ -51,19 +66,23 @@ function flipCard(event) {
 }
 
 function setTimer() {
-	let frag = document.createDocumentFragment();
-	let timer = document.createElement("h1");
-		timer.textContent = "00:00"	;
-		frag.appendChild(timer);
-
-		let now = Date.noaw();
-		let offset;
-		let timePassed = 
-
-
+		secs++;
+		min = secs/60;
+		if (Number.isInteger(min))  { 
+				mins = min; 
+				secs = 0;
+		counter.textContent = `${ leadZero(mins) }:${ leadZero(secs) }`;
+		}
+		else {
+		counter.textContent = `${ leadZero(mins) }:${ leadZero(secs) }`;
+		}
 
 
 }
+
+
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
