@@ -7,6 +7,8 @@ for (let i = 0; i < deckCards.length; i++) {
 		cardTitles.push(deckCards[i].firstElementChild.className);
 }
 openCards = [];
+let time = null;
+let moves = parseInt(document.querySelector(".moves").textContent);
 
 function leadZero(num) {
 		return ( num < 10 ? '0' : '') + num;
@@ -42,17 +44,34 @@ function shuffle(array) {
     }
 
     return array;
+
 }
+	function shuffleNames(array) {
+			for (let i = 0; i < deckCards.length; i++) {
+		deckCards[i].firstElementChild.setAttribute("class", array[i]);
+}
+}
+window.onload = shuffle(cardTitles);
+window.onload = shuffleNames(cardTitles);
+
 
 function flipCard(event) {
-		setInterval(setTimer, 1000);
+		moves++;
+		document.querySelector(".moves").textContent = moves;	
+		if  ( secs === 0 ) { time = setInterval(setTimer, 1000); }
 		event.stopImmediatePropagation();
 		openCards.push(event.target);
 		console.log('open cards =' + openCards.length);
 		event.target.style.animation = 'rotate 3s';
         event.target.setAttribute("class","card open show");
-        if (openCards.length  === 2 ) {
-                if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
+        if (openCards.length === 2) { setTimeout(checkMatch,500); }   
+		if (moves === 30) { document.querySelector("ul .starOne").style.color = "black"; }
+		if (moves === 45) { document.querySelector("ul .starTwo").style.color = "black"; }
+		if (moves === 60) { document.querySelector("ul .starThree").style.color = "black"; }
+
+}
+function checkMatch() {
+		if (openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
                         openCards[0].setAttribute("class","card show open match");
 						openCards[1].setAttribute("class", "card show open match");
 						openCards = [];
@@ -62,8 +81,8 @@ function flipCard(event) {
 						openCards[1].setAttribute("class", "card");
                         openCards = []; 
                         }
-            }
 }
+
 
 function setTimer() {
 		secs++;
@@ -80,8 +99,21 @@ function setTimer() {
 
 }
 
-
-
+let reset = document.querySelector(".fa-repeat");
+	reset.addEventListener("click", function reset() {
+		clearInterval(time);	
+		shuffle(cardTitles);
+		shuffleNames(cardTitles);
+		moves = 0;	
+		document.querySelector(".moves").textContent = moves;	
+	    document.querySelector(".starOne").style.color = "gold";
+		document.querySelector(".starTwo").style.color = "gold";
+		document.querySelector(".starThree").style.color = "gold";
+		for (let i = 0; i < deckCards.length; i++) {
+		deckCards[i].setAttribute("class", "card");
+		}
+			
+	});
 
 /*
  * set up the event listener for a card. If a card is clicked:
