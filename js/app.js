@@ -58,9 +58,10 @@ window.onload = shuffleNames(cardTitles);
 function flipCard(event) {
 		moves++;
 		document.querySelector(".moves").textContent = moves;	
-		if  ( secs === 0 ) { time = setInterval(setTimer, 1000); }
 		event.stopImmediatePropagation();
+		event.target.style.pointerEvents = "none";
 		openCards.push(event.target);
+		if ( secs === 0 ) { time = setInterval(setTimer, 1000); }
 		console.log('open cards =' + openCards.length);
 		event.target.style.animation = 'rotate 3s';
         event.target.setAttribute("class","card open show");
@@ -79,6 +80,8 @@ function checkMatch() {
                         else {
                         openCards[0].setAttribute("class","card");
 						openCards[1].setAttribute("class", "card");
+						openCards[0].style.pointerEvents = "";
+						openCards[1].style.pointerEvents = "";
                         openCards = []; 
                         }
 }
@@ -102,6 +105,7 @@ function setTimer() {
 let reset = document.querySelector(".fa-repeat");
 	reset.addEventListener("click", function reset() {
 		clearInterval(time);	
+		counter.textContent = "00:00"; 	
 		shuffle(cardTitles);
 		shuffleNames(cardTitles);
 		moves = 0;	
@@ -111,7 +115,10 @@ let reset = document.querySelector(".fa-repeat");
 		document.querySelector(".starThree").style.color = "gold";
 		for (let i = 0; i < deckCards.length; i++) {
 		deckCards[i].setAttribute("class", "card");
+		deckCards[i].style.pointerEvents = "";		
 		}
+			secs = 0;
+			mins = 0;
 			
 	});
 
