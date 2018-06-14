@@ -1,22 +1,5 @@
 # Memory Game Project
+Memory game based on the classic game concentration. Players will click cards to flip them over and find cards that match. The game is hat simple. A reset icon in the top right of the game resets the board, timer, moves as well as the start count. No animations added yet. Enjoy though.
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [Contributing](#contributing)
-
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 =======
 # FEND-memory-game
