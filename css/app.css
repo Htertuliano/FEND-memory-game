@@ -125,8 +125,27 @@ html {
      src: local("Futura BQ");
 }
 
+.none {
+     visibility:hidden;
+}
+ .congratulations {
+     position: absolute;
+     visibility: visible;
+     text-align: center;
+     margin-left: 35%;
+     margin-top:5%;
+     z-index: 1;
+     width: 40em;
+     height: 40em;
+     overflow: auto;
+     background-color: antiquewhite;
+     border:darkred double 5px;
+     color: cadetblue;
+     font-family: "Futura BQ";
+     font-size: 1.4em;
+}
  button {
      font-size: 2em;
      margin: 1em;
-}
+ }
 
