@@ -26,10 +26,13 @@ let mins = 0;
  */
 let timer = document.createDocumentFragment();
 let body = document.querySelector('body');
-let counter = document.createElement('h1');
+let counterDiv = document.createElement('div');
+let counter = document.createElement('span');
 counter.textContent = `${ leadZero(mins) }:${ leadZero(secs) }`;
-counter.setAttribute("class", "counter");
-timer.appendChild(counter);
+counterDiv.setAttribute("class", "counter");
+counter.setAttribute("class","time");
+counterDiv.appendChild(counter);
+timer.appendChild(counterDiv);
 body.appendChild(timer);
 
 /*

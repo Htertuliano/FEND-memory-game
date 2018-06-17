@@ -1,9 +1,14 @@
 html {
      box-sizing: border-box;
 }
- *, *::before, *::after {
+ *{  
      box-sizing: inherit;
 }
+
+.open > *.fa {
+    font-size:small;    
+}
+
  html, body {
      width: 100%;
      height: 100%;
@@ -11,28 +16,32 @@ html {
      padding: 0;
 }
  body {
-     background: #ffffff url('../img/geometry2.png');
-    /* Background pattern from Subtle Patterns */
+     background-image: url(https://www.techspot.com/articles-info/1371/images/2017-04-06-image.png);
+     background-repeat:repeat;
+     background-size: 50%;
      font-family: 'Coda', cursive;
 }
  .container {
-     position: fixed;
-     margin-left: 80em;
-     margin-top: 5%;
+     position: relative;
      display: flex;
      justify-content: center;
      align-items: center;
-     flex-direction: column;
-     z-index: 1;
+     flex-direction: column;   
+}
+    @font-face {
+    font-family: Din
+    src: local(Din);
 }
  h1 {
-     font-family: 'Open Sans', sans-serif;
-     font-weight: 300;
+     font-family: Din;
+     font-weight: 500;
+    font-style: italic;
+     color: white;
 }
 /* * Styles for the deck of cards */
  .deck {
-     width: 660px;
-     min-height: 680px;
+     width: 300px;
+     min-height: 300px;
      background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
      padding: 32px;
      border-radius: 10px;
@@ -44,9 +53,9 @@ html {
      margin: 0 0 3em;
 }
  .deck .card {
-     height: 125px;
-     width: 125px;
-     background: #2e3d49;
+     height: 50px;
+     width: 50px;
+     background: black; 
      font-size: 0;
      color: #ffffff;
      border-radius: 8px;
@@ -56,23 +65,28 @@ html {
      align-items: center;
      box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
+
+  @keyframes {
+
+}  
  .deck .card.open {
-     animation: rotateX(180) 3s;
-     background: #02b3e4;
-     cursor: default;
+    transform: rotateY(180deg);
+     background: #2e3d49;
+     cursor: pointer;
 }
  .deck .card.show {
      font-size: 33px;
 }
  .deck .card.match {
      cursor: default;
-     background: #02ccba;
+     background: darkcyan;
      font-size: 33px;
-}
+}  
+
 /* * Styles for the Score Panel */
  .score-panel {
      text-align: left;
-     width: 345px;
+     width: 250px;
      margin-bottom: 10px;
 }
  .score-panel .stars {
@@ -91,34 +105,26 @@ html {
      cursor: pointer;
 }
  .counter {
-     position: absolute;
-     margin:auto;
-     left: 35%;
-     bottom: 60%;
+    margin: auto;
+    display: flex;
+    color: black;
+    background-color:aliceblue;
+    font-size: 3.5em;
+    font-family: Futura BQ;
+    max-width: fit-content;
+    border-radius: 10%;
 }
+.time {
+    padding: 10%;
+    justify-content: center;
+    text-align: center;
+    }
+
  @font-face {
      font-family: Futura BQ;
      src: local("Futura BQ");
 }
- .none {
-     visibility:hidden;
-}
- .congratulations {
-     position: absolute;
-     visibility: visible;
-     text-align: center;
-     margin-left: 35%;
-     margin-top:5%;
-     z-index: 1;
-     width: 40em;
-     height: 40em;
-     overflow: auto;
-     background-color: antiquewhite;
-     border:darkred double 5px;
-     color: cadetblue;
-     font-family: "Futura BQ";
-     font-size: 1.4em;
-}
+
  button {
      font-size: 2em;
      margin: 1em;
