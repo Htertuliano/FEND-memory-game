@@ -3,3 +3,9 @@ Memory game based on the classic game concentration. Players will click cards to
 
 =======
 # FEND-memory-game
+
+Dependencies:
+FontAwesome bootstrap link.
+Jquery
+Javascript
+CSS5
