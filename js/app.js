@@ -145,7 +145,7 @@ function setTimer() {
   secs++;
   min = secs / 60;
   if (Number.isInteger(min)) {
-    mins = min;
+    mins++;
     secs = 0;
     counter.textContent = `${ leadZero(mins) }:${ leadZero(secs) }`;
   } else {
@@ -169,6 +169,7 @@ function reset() {
   shuffle(cardTitles);
   shuffleNames(cardTitles);
   moves = 0;
+  timerCheck = 1;		
   document.querySelector(".moves").textContent = moves;
   document.querySelector(".starOne").style.color = "gold";
   document.querySelector(".starTwo").style.color = "gold";
@@ -196,6 +197,7 @@ function reset() {
 function congratulations() {
   docu = document.createDocumentFragment(); //Creates document fragment and appends h1 with the move, stars and time as the text 
   congrats = document.createElement("div");
+  congratsText = document.createElement("div");
   playAgain = document.createElement("h1");
   btn = document.createElement("BUTTON"); // Yes and No buttons created
   text = document.createTextNode("Yes");
@@ -204,10 +206,12 @@ function congratulations() {
   btn.appendChild(text);
   btn2.appendChild(text2);
   playAgain.innerHTML = `Congratulations! <br /> You won in  ${moves} moves and  ${counter.textContent} <br /> With ${starCount} stars <br /> Would you like to play again??`;
-  congrats.appendChild(playAgain);
+  congratsText.appendChild(playAgain);
+  congratsText.appendChild(btn);
+  congratsText.appendChild(btn2);
+  congrats.appendChild(congratsText);
+  congratsText.setAttribute("class","grazi");		
   docu.appendChild(congrats);
-  congrats.appendChild(btn);
-  congrats.appendChild(btn2);
   body.appendChild(docu);
   btn.addEventListener("click", reset);
   btn2.addEventListener("click", function showGame() {
